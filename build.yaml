@@ -1,0 +1,8 @@
+---
+include:
+  - board: cosmos_lemon_wireless_v4
+    shield: cosmotyl_left
+  - board: cosmos_lemon_wireless_v4
+    shield: cosmotyl_right vik_pmw3610
+    snippet: zmk-usb-logging;studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
