@@ -1,6 +1,6 @@
 file_format: "1"
-id: cosmotyl
-name: cosmotyl
+id: chell
+name: chell
 type: shield
 url: https://github.com/rianadon/Cosmos-Keyboards
 features:
@@ -9,5 +9,5 @@ features:
   - encoder
   - studio
 siblings:
-  - cosmotyl_left
-  - cosmotyl_right
+  - chell_left
+  - chell_right

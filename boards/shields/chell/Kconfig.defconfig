@@ -1,0 +1,17 @@
+
+if SHIELD_chell_RIGHT
+
+config ZMK_KEYBOARD_NAME
+    default "chell"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif # SHIELD_chell_RIGHT
+
+if SHIELD_chell_LEFT || SHIELD_chell_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif # SHIELD_chell_LEFT || SHIELD_chell_RIGHT
