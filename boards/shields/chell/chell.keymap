@@ -2,6 +2,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/reset.h>
+#include <dt-bindings/zmk/rgb.h>
 
 / {
     behaviors {
@@ -162,22 +163,21 @@
         };
 
         /* Layer 4: Function layer
-         * Mapped from spartan_mittns layer 4, dropping far left/right columns.
-         * TG(3) toggles gaming layer, QK_RBT reboots.
+         * Toggles gaming layer, reboots, and toggles underglow.
          *
          *  Tog3  _     _     _     _        _  _  _  _  _
          *  Reset _     _     _     _        _  _  _  _  _
          *  _     _     _     _     _        _  _  _  _  _
          *
          *  Left thumbs:  _  _  _  _  _
-         *  Right thumbs: _  _  _
+         *  Right thumbs: RGB_TOG  _  _
          */
         func {
             bindings = <
                 &tog 3     &trans     &trans     &trans     &trans       &trans    &trans    &trans    &trans    &trans
                 &sys_reset &trans     &trans     &trans     &trans       &trans    &trans    &trans    &trans    &trans
                 &trans     &trans     &trans     &trans     &trans       &trans    &trans    &trans    &trans    &trans
-                &trans     &trans     &trans     &trans     &trans       &trans    &trans    &trans
+                &trans     &trans     &trans     &trans     &trans       &rgb_ug RGB_TOG &trans &trans
             >;
         };
     };
