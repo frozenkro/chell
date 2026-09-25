@@ -63,6 +63,13 @@
             flavor = "hold-preferred";
             bindings = <&kp>, <&kp>;
         };
+        tm_4: homerow_mod_l {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <170>;
+            flavor = "hold-preferred";
+            bindings = <&kp>, <&kp>;
+        };
     };
 
     /* Combo: left click + right click = middle click (scroll wheel click) */
@@ -93,7 +100,7 @@
                 &kp Q      &kp W      &kp E       &kp R       &kp T        &kp Y    &kp U      &kp I      &kp O      &kp P
                 &hm_a LGUI A &hm_s LALT S &hm_d LCTL D &hm_f LSHFT F &kp G  &kp H    &hm_j RSHFT J &hm_k RCTL K &hm_l RALT L &kp SEMI
                 &kp Z      &kp X      &kp C       &kp V       &kp B        &kp N    &kp M      &kp COMMA  &kp DOT    &kp SLASH
-                &kp ESC    &lt 1 SPACE &kp LEFT_SHIFT      &mo 2       &lt 1 BSPC   &mkp LCLK &mkp RCLK &kp ENTER
+                &kp ESC    &lt 1 SPACE &lt 2 CAPS &tm_4 LSHFT BSPC         &lt 2 LGUI   &mkp LCLK &mkp RCLK &kp ENTER
             >;
         };
 
