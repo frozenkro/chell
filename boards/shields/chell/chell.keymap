@@ -64,12 +64,12 @@
             flavor = "hold-preferred";
             bindings = <&kp>, <&kp>;
         };
-        tm_4: homerow_mod_l {
+        tm_4: layer_tap_4 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <170>;
-            flavor = "hold-preferred";
-            bindings = <&kp>, <&kp>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&kp>;
         };
     };
 
