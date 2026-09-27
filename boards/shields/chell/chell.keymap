@@ -6,70 +6,54 @@
 
 / {
     behaviors {
-        /* Home-row mods with per-key tapping terms.
-           QMK spartan_mittns had:
-             HM_A: 200ms, no permissive hold (tap-preferred)
-             HM_D: 170ms
-             HM_F: 100ms
-             HM_J: 100ms
-             HM_K: 170ms
-             default: 170ms
-        */
-        hm_a: homerow_mod_a {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-        };
         hm_d: homerow_mod_d {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <170>;
-            flavor = "hold-preferred";
+            flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
         hm_f: homerow_mod_f {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <100>;
-            flavor = "hold-preferred";
+            flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
         hm_j: homerow_mod_j {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <100>;
-            flavor = "hold-preferred";
+            flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
         hm_k: homerow_mod_k {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <170>;
-            flavor = "hold-preferred";
+            flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
         hm_s: homerow_mod_s {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <170>;
-            flavor = "hold-preferred";
+            flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
         hm_l: homerow_mod_l {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <170>;
-            flavor = "hold-preferred";
+            flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
         tm_4: layer_tap_4 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&mo>, <&kp>;
+            flavor = "hold-preferred";
+            bindings = <&kp>, <&kp>;
         };
     };
 
@@ -99,18 +83,17 @@
         default_layer {
             bindings = <
                 &kp Q      &kp W      &kp E       &kp R       &kp T        &kp Y    &kp U      &kp I      &kp O      &kp P
-                &hm_a LGUI A &hm_s LALT S &hm_d LCTL D &hm_f LSHFT F &kp G  &kp H    &hm_j RSHFT J &hm_k RCTL K &hm_l RALT L &kp SEMI
+                &kp A      &hm_s LALT S &hm_d LCTL D &hm_f LSHFT F &kp G  &kp H    &hm_j RSHFT J &hm_k RCTL K &hm_l RALT L &kp SEMI
                 &kp Z      &kp X      &kp C       &kp V       &kp B        &kp N    &kp M      &kp COMMA  &kp DOT    &kp SLASH
                 &kp ESC    &lt 1 SPACE &lt 2 CAPS &tm_4 LSHFT BSPC         &lt 4 LGUI   &mkp LCLK &mkp RCLK &kp ENTER
             >;
         };
 
         /* Layer 1: Numbers and symbols
-         * Mapped from spartan_mittns layer 1, dropping far left/right columns.
          *
          *  Tab   7     8     9     =        _     _     _     _     _
          *  Tab   4     5     6     0        [     9     0     ]     _
-         *  _     1     2     3     -        '     `     _     \     _
+         *  _     1     2     3     -        '     `     _     _     \
          *
          *  Left thumbs:  GUI  _  _  Del  Spc
          *  Right thumbs: _  _  _
@@ -119,7 +102,7 @@
             bindings = <
                 &kp TAB    &kp N7     &kp N8     &kp N9     &kp EQUAL    &trans    &trans    &trans    &trans    &trans
                 &kp TAB    &kp N4     &kp N5     &kp N6     &kp N0       &kp LBKT  &kp N9    &kp N0    &kp RBKT  &trans
-                &trans     &kp N1     &kp N2     &kp N3     &kp MINUS    &kp SQT   &kp GRAVE &trans    &kp BSLH  &trans
+                &trans     &kp N1     &kp N2     &kp N3     &kp MINUS    &kp SQT   &kp GRAVE &trans    &trans    &kp BSLH
                 &kp LGUI   &trans     &trans     &trans     &kp SPACE    &trans    &trans    &trans
             >;
         };
@@ -139,7 +122,7 @@
                 &kp VOLU   &kp F7     &kp F8     &kp F9     &kp F10      &trans    &trans    &trans    &kp PGUP   &trans
                 &kp VOLD   &kp F4     &kp F5     &kp F6     &kp F11      &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &kp CAPS
                 &kp C_MUTE &kp F1     &kp F2     &kp F3     &kp F12      &kp PGDN  &trans    &trans    &trans     &kp PSCRN
-                &trans     &trans     &kp DELETE &trans     &trans       &trans    &trans    &trans
+                &trans     &trans     &trans     &trans     &trans       &trans    &trans    &trans
             >;
         };
 
@@ -182,3 +165,6 @@
         };
     };
 };
+
+
+
