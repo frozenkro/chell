@@ -67,7 +67,7 @@
         game_on: game_on {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&rgb_ug RGB_COLOR_HSB(120 100 40)>, <&tog 3>;
+            bindings = <&rgb_ug RGB_COLOR_HSB(120, 100, 40)>, <&tog 3>;
         };
 
         /* Macro: exit gaming layer back to default */
@@ -81,7 +81,7 @@
         rgb_red: rgb_red {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&rgb_ug RGB_COLOR_HSB(0 100 40)>;
+            bindings = <&rgb_ug RGB_COLOR_HSB(0, 100, 40)>;
         };
     };
 
