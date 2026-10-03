@@ -48,12 +48,40 @@
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
+        tm_2: layer_tap_2 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <170>;
+            flavor = "hold-preferred";
+            bindings = <&mo>, <&kp>;
+        };
         tm_4: layer_tap_4 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "hold-preferred";
             bindings = <&kp>, <&kp>;
+        };
+
+        /* Macro: enter gaming layer and set both sides green */
+        game_on: game_on {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&rgb_ug RGB_COLOR_HSB(120 100 40)>, <&tog 3>;
+        };
+
+        /* Macro: exit gaming layer back to default */
+        game_off: game_off {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0>;
+        };
+
+        /* Macro: set both sides red (manual low battery indicator) */
+        rgb_red: rgb_red {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&rgb_ug RGB_COLOR_HSB(0 100 40)>;
         };
     };
 
@@ -85,7 +113,7 @@
                 &kp Q      &kp W      &kp E       &kp R       &kp T        &kp Y    &kp U      &kp I      &kp O      &kp P
                 &kp A      &hm_s LALT S &hm_d LCTL D &hm_f LSHFT F &kp G  &kp H    &hm_j RSHFT J &hm_k RCTL K &hm_l RALT L &kp SEMI
                 &kp Z      &kp X      &kp C       &kp V       &kp B        &kp N    &kp M      &kp COMMA  &kp DOT    &kp SLASH
-                &kp ESC    &lt 1 SPACE &lt 2 CAPS &tm_4 LSHFT BSPC         &lt 4 LGUI   &mkp LCLK &mkp RCLK &kp ENTER
+                &kp ESC    &tm_2 1 SPACE &lt 2 CAPS &tm_4 LSHFT BSPC         &lt 4 LGUI   &mkp LCLK &mkp RCLK &kp ENTER
             >;
         };
 
@@ -122,14 +150,15 @@
                 &kp VOLU   &kp F7     &kp F8     &kp F9     &kp F10      &trans    &trans    &trans    &kp PGUP   &trans
                 &kp VOLD   &kp F4     &kp F5     &kp F6     &kp F11      &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &kp CAPS
                 &kp C_MUTE &kp F1     &kp F2     &kp F3     &kp F12      &kp PGDN  &trans    &trans    &trans     &kp PSCRN
-                &trans     &trans     &trans     &trans     &trans       &trans    &trans    &trans
+                &trans     &trans     &trans     &trans     &kp DEL      &trans    &trans    &trans
             >;
         };
 
         /* Layer 3: Gaming (WASD shifted)
          * Mapped from spartan_mittns layer 3, dropping far left/right columns.
+         * Press Game (top-left) to exit back to default layer and restore RGB.
          *
-         *  Q     W     E     R     _        _  _  _  _  _
+         *  Game  W     E     R     _        _  _  _  _  _
          *  LSFT  A     S     D     F        _  _  _  _  _
          *  LCTL  Z     X     C     V        _  _  _  _  _
          *
@@ -138,7 +167,7 @@
          */
         gaming {
             bindings = <
-                &kp Q      &kp W      &kp E      &kp R      &trans       &trans    &trans    &trans    &trans    &trans
+                &game_off  &kp W      &kp E      &kp R      &trans       &trans    &trans    &trans    &trans    &trans
                 &kp LSHFT  &kp A      &kp S      &kp D      &kp F        &trans    &trans    &trans    &trans    &trans
                 &kp LCTRL  &kp Z      &kp X      &kp C      &kp V        &trans    &trans    &trans    &trans    &trans
                 &kp LCTRL  &kp SPACE  &trans     &trans     &trans       &trans    &trans    &trans
@@ -146,9 +175,9 @@
         };
 
         /* Layer 4: Function layer
-         * Toggles gaming layer, reboots, and toggles underglow.
+         * Toggles gaming layer (sets RGB green), reboots, toggles underglow.
          *
-         *  Tog3  _     _     _     _        _  _  _  _  _
+         *  Game  _     _     _     _        _  _  _  _  _
          *  Reset _     _     _     _        _  _  _  _  _
          *  _     _     _     _     _        _  _  _  _  _
          *
@@ -157,7 +186,7 @@
          */
         func {
             bindings = <
-                &tog 3     &trans     &trans     &trans     &trans       &trans    &trans    &trans    &trans    &trans
+                &game_on   &trans     &trans     &trans     &trans       &trans    &trans    &trans    &trans    &trans
                 &sys_reset &trans     &trans     &trans     &trans       &trans    &trans    &trans    &trans    &trans
                 &trans     &trans     &trans     &trans     &trans       &trans    &trans    &trans    &trans    &trans
                 &trans     &trans     &trans     &trans     &trans       &rgb_ug RGB_TOG &trans &trans
