@@ -9,10 +9,11 @@
 // Pulled out to an external variable so VIK can find the SPI bus.
 #define VIK_SPI_CS_PREFIX <&gpio0 4 GPIO_ACTIVE_LOW>
 
-&vik_i2c {
+&i2c0 {
     status = "okay";
 
     oled: oled@3c {
+        status = "okay";
         compatible = "solomon,ssd1306fb";
         reg = <0x3c>;
         width = <128>;
@@ -24,12 +25,8 @@
         segment-remap;
         com-invdir;
         com-sequential;
-        precharge = <0x22>;
-        osc-freq = <0x8>;
-        precharge-period = <0x22>;
-        com-pad-config = <0x02>;
-        start-line = <0>;
-        inverse-on;
+        prechargep = <0x22>;
+        inversion-on;
     };
 };
 
@@ -52,7 +49,7 @@
     chosen {
         zmk,kscan = &kscan0;
         zmk,physical-layout = &default_layout;
-        zmk,display = <&oled>;
+        zephyr,display = <&oled>;
     };
 
     default_transform: keymap_transform_0 {
